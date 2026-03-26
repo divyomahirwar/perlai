@@ -1,58 +1,40 @@
 <style>
 * {
-  box-sizing: border-box;
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
+  font-family: system-ui, -apple-system, sans-serif;
 }
 
 body {
-  font-family: system-ui, sans-serif;
-  background: linear-gradient(135deg, #1e3a8a, #3b82f6, #9333ea);
-  background-size: 300% 300%;
-  animation: gradientMove 8s ease infinite;
-  min-height: 100vh;
+  background: #f4f7ff;
+  color: #0f172a;
 }
 
-@keyframes gradientMove {
-  0% { background-position: 0% 50%;}
-  50% { background-position: 100% 50%;}
-  100% { background-position: 0% 50%;}
-}
-
-.page {
-  padding: 2rem 1rem;
-}
-
-/* GLASS CARD */
-.glass {
-  background: rgba(255,255,255,0.08);
-  backdrop-filter: blur(18px);
-  border: 1px solid rgba(255,255,255,0.15);
+/* CONTAINER */
+.container {
+  max-width: 1100px;
+  margin: auto;
+  padding: 20px;
 }
 
 /* HEADER */
 .header {
-  max-width: 900px;
-  margin: auto;
-  padding: 1rem 2rem;
-  border-radius: 14px;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-bottom: 40px;
 }
 
 .logo {
   font-weight: 700;
-  color: #fff;
+  font-size: 18px;
+  color: #1e40af;
 }
 
-.logo span {
-  color: #a5b4fc;
-}
-
-.live-badge {
-  background: rgba(34,197,94,0.15);
-  color: #22c55e;
+.badge {
+  background: #e0f2fe;
+  color: #0284c7;
   padding: 6px 14px;
   border-radius: 20px;
   font-size: 12px;
@@ -61,310 +43,193 @@ body {
 /* HERO */
 .hero {
   text-align: center;
-  color: #fff;
-  margin-top: 2.5rem;
+  margin-bottom: 40px;
 }
 
 .hero h1 {
-  font-size: 2.4rem;
+  font-size: 32px;
   margin-bottom: 10px;
-  animation: fadeUp 1s ease;
 }
 
 .hero p {
-  opacity: 0.8;
-  margin-bottom: 2rem;
-  animation: fadeUp 1.3s ease;
-}
-
-@keyframes fadeUp {
-  from { opacity:0; transform: translateY(20px);}
-  to { opacity:1; transform: translateY(0);}
+  color: #64748b;
 }
 
 /* STATS */
 .stats {
   display: flex;
   justify-content: center;
-  gap: 1.5rem;
+  gap: 20px;
+  margin-top: 25px;
+  flex-wrap: wrap;
 }
 
-.stat-card {
-  padding: 1rem 1.4rem;
+.stat {
+  background: white;
+  padding: 15px 25px;
   border-radius: 12px;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.05);
   text-align: center;
-  transition: 0.3s;
 }
 
-.stat-card:hover {
-  transform: translateY(-6px) scale(1.05);
+.stat h3 {
+  color: #2563eb;
 }
 
-.stat-val {
-  font-size: 1.5rem;
-  color: #fff;
+.stat p {
+  font-size: 12px;
+  color: #94a3b8;
 }
 
-.stat-lbl {
-  font-size: 11px;
-  opacity: 0.7;
-}
-
-/* MAIN CARD */
-.main-card {
-  max-width: 520px;
-  margin: 2.5rem auto;
-  padding: 2rem;
+/* CARD */
+.card {
+  background: white;
+  max-width: 480px;
+  margin: auto;
+  padding: 30px;
   border-radius: 16px;
-  color: #fff;
-  animation: fadeUp 1.5s ease;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.06);
 }
 
-.main-card h2 {
-  margin-bottom: 6px;
+.card h2 {
+  margin-bottom: 5px;
 }
 
-.sub {
-  opacity: 0.7;
-  margin-bottom: 1.5rem;
+.card p {
+  font-size: 14px;
+  color: #64748b;
+  margin-bottom: 20px;
 }
 
 /* INPUT */
-.input-wrap input {
+input {
   width: 100%;
-  padding: 13px;
-  border-radius: 8px;
-  border: none;
-  outline: none;
-  background: rgba(255,255,255,0.1);
-  color: #fff;
-  transition: 0.3s;
+  padding: 14px;
+  border-radius: 10px;
+  border: 1px solid #e2e8f0;
+  margin-bottom: 15px;
+  font-size: 14px;
 }
 
-.input-wrap input:focus {
-  background: rgba(255,255,255,0.2);
+input:focus {
+  outline: none;
+  border-color: #3b82f6;
 }
 
 /* BUTTON */
-.btn {
-  margin-top: 1rem;
+button {
   width: 100%;
   padding: 14px;
   border-radius: 10px;
   border: none;
+  background: #2563eb;
+  color: white;
   font-weight: 600;
-  color: #fff;
   cursor: pointer;
-  background: linear-gradient(135deg, #3b82f6, #9333ea);
-  transition: 0.3s;
+  transition: 0.2s;
 }
 
-.btn:hover {
-  transform: scale(1.05);
-  box-shadow: 0 0 20px rgba(147,51,234,0.5);
+button:hover {
+  background: #1d4ed8;
 }
 
 /* RESULT */
 .result {
-  margin-top: 1.5rem;
-  padding: 1rem;
+  margin-top: 15px;
+  padding: 12px;
   border-radius: 10px;
   display: none;
-  animation: fadeUp 0.5s ease;
+  font-size: 14px;
 }
 
-.result.no {
-  background: rgba(255,0,0,0.15);
+.error {
+  background: #fee2e2;
+  color: #b91c1c;
 }
 
-.result.yes {
-  background: rgba(0,255,100,0.15);
+.success {
+  background: #dcfce7;
+  color: #15803d;
 }
 
-/* LOADING */
-.loader {
-  display: none;
-  margin-top: 1rem;
-  text-align: center;
-}
-
-.loader span {
-  width: 10px;
-  height: 10px;
-  margin: 0 4px;
-  background: #fff;
-  border-radius: 50%;
-  display: inline-block;
-  animation: bounce 0.6s infinite alternate;
-}
-
-.loader span:nth-child(2) {
-  animation-delay: 0.2s;
-}
-
-.loader span:nth-child(3) {
-  animation-delay: 0.4s;
-}
-
-@keyframes bounce {
-  to { transform: translateY(-8px); }
-}
-
+/* FOOTER */
 .footer {
   text-align: center;
-  color: #fff;
-  opacity: 0.6;
+  margin-top: 30px;
   font-size: 12px;
+  color: #94a3b8;
+}
+
+/* MOBILE */
+@media(max-width:600px){
+  .hero h1 {
+    font-size: 24px;
+  }
+
+  .card {
+    padding: 20px;
+  }
 }
 </style>
 
-<div class="page">
-  <div class="header glass">
-    <div class="logo">Token<span>Sale</span></div>
-    <div class="live-badge">● Live</div>
-  </div>
+<div class="container">
 
-  <div class="hero">
-    <h1>Join the Token Presale</h1>
-    <p>Secure your allocation before public sale.</p>
-
-    <div class="stats">
-      <div class="stat-card glass">
-        <div class="stat-val">$2.4M</div>
-        <div class="stat-lbl">Raised</div>
-      </div>
-      <div class="stat-card glass">
-        <div class="stat-val">8,312</div>
-        <div class="stat-lbl">Users</div>
-      </div>
-      <div class="stat-card glass">
-        <div class="stat-val">62%</div>
-        <div class="stat-lbl">Filled</div>
-      </div>
-    </div>
-  </div>
-
-  <div class="main-card glass">
-    <h2>Check Eligibility</h2>
-    <p class="sub">Paste wallet address</p>
-
-    <div class="input-wrap">
-      <input id="walletInput" placeholder="0x000..." />
-    </div>
-
-    <button class="btn" onclick="checkEligibility()">Check</button>
-
-    <div class="loader" id="loader">
-      <span></span><span></span><span></span>
-    </div>
-
-    <div class="result" id="resultBox"></div>
-  </div>
-
-  <div class="footer">Secure • No wallet connect</div>
-</div>
-
-<script>
-function checkEligibility() {
-  const val = document.getElementById('walletInput').value.trim();
-  const box = document.getElementById('resultBox');
-  const loader = document.getElementById('loader');
-
-  box.style.display = "none";
-  loader.style.display = "block";
-
-  setTimeout(() => {
-    loader.style.display = "none";
-    box.style.display = "block";
-
-    if (!val) {
-      box.className = "result no";
-      box.innerHTML = "⚠️ Enter wallet address";
-      return;
-    }
-
-    box.className = "result no";
-    box.innerHTML = "❌ Not eligible (demo)";
-  }, 1200);
-}
-</script>  .info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-  .info-item { background: #f8f9fc; border-radius: 8px; padding: 10px 12px; }
-  .info-item .lbl { font-size: 11px; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 3px; }
-  .info-item .val { font-size: 13px; font-weight: 600; color: #1e293b; }
-  .footer { text-align: center; margin-top: 1.5rem; font-size: 11px; color: #94a3b8; }
-</style>
-
-<div class="page">
   <div class="header">
-    <div class="logo">Token<span>Sale</span></div>
-    <div class="live-badge">● Presale Live</div>
+    <div class="logo">TokenSale</div>
+    <div class="badge">● Presale Live</div>
   </div>
 
   <div class="hero">
     <h1>Join the Token Presale</h1>
-    <p>Secure your allocation before the public sale opens. Check your wallet eligibility below.</p>
+    <p>Secure your allocation before public sale</p>
+
     <div class="stats">
-      <div class="stat-card"><div class="stat-val">$2.4M</div><div class="stat-lbl">Raised</div></div>
-      <div class="stat-card"><div class="stat-val">8,312</div><div class="stat-lbl">Participants</div></div>
-      <div class="stat-card"><div class="stat-val">62%</div><div class="stat-lbl">Filled</div></div>
-    </div>
-  </div>
-
-  <div class="main-card">
-    <h2>Check Eligibility to Join Presale</h2>
-    <p class="sub">Paste your wallet address below to verify if you are whitelisted for the presale round.</p>
-
-    <div class="input-wrap">
-      <label>Wallet Address</label>
-      <input type="text" id="walletInput" placeholder="0x0000...0000" maxlength="120" />
-    </div>
-
-    <button class="btn" onclick="checkEligibility()">Check Eligibility</button>
-
-    <div class="result" id="resultBox">
-      <div class="result-title">
-        <div class="icon" id="resultIcon"></div>
-        <span id="resultTitle"></span>
+      <div class="stat">
+        <h3>$2.4M</h3>
+        <p>Raised</p>
       </div>
-      <div class="result-desc" id="resultDesc"></div>
-    </div>
-
-    <div class="divider"></div>
-
-    <div class="info-grid">
-      <div class="info-item"><div class="lbl">Network</div><div class="val">Ethereum (ERC-20)</div></div>
-      <div class="info-item"><div class="lbl">Token Price</div><div class="val">$0.025 / token</div></div>
-      <div class="info-item"><div class="lbl">Min. Purchase</div><div class="val">0.1 ETH</div></div>
-      <div class="info-item"><div class="lbl">Presale Ends</div><div class="val">Mar 30, 2025</div></div>
+      <div class="stat">
+        <h3>8,312</h3>
+        <p>Users</p>
+      </div>
+      <div class="stat">
+        <h3>62%</h3>
+        <p>Filled</p>
+      </div>
     </div>
   </div>
 
-  <div class="footer">Secure · Read-only eligibility check · No wallet connection required</div>
+  <div class="card">
+    <h2>Check Eligibility</h2>
+    <p>Enter wallet address</p>
+
+    <input id="wallet" placeholder="0x0000..." />
+
+    <button onclick="check()">Check Eligibility</button>
+
+    <div id="result" class="result"></div>
+  </div>
+
+  <div class="footer">
+    Secure • No wallet connection required
+  </div>
+
 </div>
 
 <script>
-function checkEligibility() {
-  const val = document.getElementById('walletInput').value.trim();
-  const box = document.getElementById('resultBox');
-  const title = document.getElementById('resultTitle');
-  const desc = document.getElementById('resultDesc');
-  const icon = document.getElementById('resultIcon');
+function check(){
+  const val = document.getElementById('wallet').value.trim();
+  const res = document.getElementById('result');
 
-  box.style.display = 'block';
+  res.style.display = "block";
 
-  if (!val) {
-    box.className = 'result no';
-    icon.className = 'icon icon-no';
-    icon.textContent = '!';
-    title.textContent = 'Address required';
-    desc.textContent = 'Please enter your wallet address to check eligibility.';
+  if(!val){
+    res.className = "result error";
+    res.innerHTML = "⚠️ Enter wallet address";
     return;
   }
 
-  box.className = 'result no';
-  icon.className = 'icon icon-no';
-  icon.textContent = '✕';
-  title.textContent = 'You are not eligible';
-  desc.textContent = 'This wallet address is not on the presale whitelist. Please follow our official channels to apply for the next whitelist round.';
+  res.className = "result error";
+  res.innerHTML = "❌ Not eligible (demo)";
 }
 </script>
